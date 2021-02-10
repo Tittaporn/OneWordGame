@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		367EF80625D49177005362D0 /* OneWordGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367EF80525D49177005362D0 /* OneWordGameViewController.swift */; };
 		DEA2C0D625D46C7A00DEA0BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA2C0D525D46C7A00DEA0BA /* AppDelegate.swift */; };
 		DEA2C0D825D46C7A00DEA0BA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA2C0D725D46C7A00DEA0BA /* SceneDelegate.swift */; };
 		DEA2C0DD25D46C7A00DEA0BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEA2C0DB25D46C7A00DEA0BA /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		367EF80525D49177005362D0 /* OneWordGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneWordGameViewController.swift; sourceTree = "<group>"; };
 		DEA2C0D225D46C7A00DEA0BA /* OneWordGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneWordGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEA2C0D525D46C7A00DEA0BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DEA2C0D725D46C7A00DEA0BA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,6 +37,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		367EF80425D49144005362D0 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				367EF80525D49177005362D0 /* OneWordGameViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		DEA2C0C925D46C7A00DEA0BA = {
 			isa = PBXGroup;
 			children = (
@@ -54,6 +64,7 @@
 		DEA2C0D425D46C7A00DEA0BA /* OneWordGame */ = {
 			isa = PBXGroup;
 			children = (
+				367EF80425D49144005362D0 /* ViewControllers */,
 				DEA2C0ED25D46CC100DEA0BA /* Views */,
 				DEA2C0EA25D46C9100DEA0BA /* Resources */,
 			);
@@ -160,6 +171,7 @@
 			files = (
 				DEA2C0D625D46C7A00DEA0BA /* AppDelegate.swift in Sources */,
 				DEA2C0D825D46C7A00DEA0BA /* SceneDelegate.swift in Sources */,
+				367EF80625D49177005362D0 /* OneWordGameViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
