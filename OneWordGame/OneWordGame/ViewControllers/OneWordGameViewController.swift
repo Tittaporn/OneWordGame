@@ -8,22 +8,20 @@
 import UIKit
 
 class OneWordGameViewController: UIViewController {
-
+    
+    // MARK: - Outlets
+    @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var stackViewTargetWord: UIStackView!
+    @IBOutlet weak var typingWordTextField: UITextField!
+    @IBOutlet weak var directionLabel: UILabel!
+    @IBOutlet weak var resultLabel: UILabel!
+    
+    // MARK: - Life Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--One Word Game View Controller-->
         <scene sceneID="b8R-O3-6Mr">
             <objects>
-                <viewController id="FR8-o6-J5y" sceneMemberID="viewController">
+                <viewController id="FR8-o6-J5y" customClass="OneWordGameViewController" customModule="OneWordGame" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jUn-o5-dhQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -109,6 +109,14 @@
                             <constraint firstItem="2UW-K6-Bzf" firstAttribute="width" secondItem="8rH-G3-X8f" secondAttribute="width" multiplier="0.9" id="yie-yq-nzJ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="directionLabel" destination="fKp-oq-Rt6" id="HoV-Vb-t3T"/>
+                        <outlet property="resultLabel" destination="gST-yv-dbD" id="m9U-Yg-KLz"/>
+                        <outlet property="scoreLabel" destination="PZa-ui-O1F" id="Ket-o2-IGa"/>
+                        <outlet property="stackViewTargetWord" destination="YfN-4p-twi" id="7sk-k1-Iqv"/>
+                        <outlet property="timerLabel" destination="Th0-2z-esH" id="VRK-vt-Faj"/>
+                        <outlet property="typingWordTextField" destination="fR8-vL-bb5" id="2pb-hl-Uiw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7vh-Uk-KCJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
