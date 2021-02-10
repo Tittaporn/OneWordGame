@@ -1,24 +1,139 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FR8-o6-J5y">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--One Word Game View Controller-->
+        <scene sceneID="b8R-O3-6Mr">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <viewController id="FR8-o6-J5y" customClass="OneWordGameViewController" customModule="OneWordGame" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jUn-o5-dhQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="8rH-G3-X8f">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="score" translatesAutoresizingMaskIntoConstraints="NO" id="4wb-Eb-TT0">
+                                <rect key="frame" x="20" y="84" width="165.5" height="51"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="time" translatesAutoresizingMaskIntoConstraints="NO" id="gpb-o0-1BX">
+                                <rect key="frame" x="248.5" y="84" width="165.5" height="49"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="number" translatesAutoresizingMaskIntoConstraints="NO" id="2UW-K6-Bzf">
+                                <rect key="frame" x="20.5" y="205" width="373" height="122"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="input" translatesAutoresizingMaskIntoConstraints="NO" id="beV-eq-wq0">
+                                <rect key="frame" x="20.5" y="357" width="373" height="111"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZa-ui-O1F">
+                                <rect key="frame" x="80.5" y="89" width="45" height="41"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are better try harder! 👎" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gST-yv-dbD">
+                                <rect key="frame" x="55.5" y="498" width="303" height="27.5"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="25"/>
+                                <color key="textColor" red="0.52941176470588236" green="0.30980392156862746" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="YfN-4p-twi">
+                                <rect key="frame" x="59.5" y="234.5" width="295" height="63"/>
+                            </stackView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type One Word Here..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fR8-vL-bb5">
+                                <rect key="frame" x="53.5" y="387" width="307" height="51"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" systemColor="systemIndigoColor"/>
+                                <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="25"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type the word fast to get scores." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fKp-oq-Rt6">
+                                <rect key="frame" x="37" y="736.5" width="340" height="65.5"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 : 10" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Th0-2z-esH">
+                                <rect key="frame" x="271" y="93" width="83" height="24"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ncG-Qp-OAW"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="8rH-G3-X8f" firstAttribute="height" secondItem="jUn-o5-dhQ" secondAttribute="height" id="0rG-Fu-mP6"/>
+                            <constraint firstItem="4wb-Eb-TT0" firstAttribute="width" secondItem="jUn-o5-dhQ" secondAttribute="width" multiplier="0.4" id="7No-Fb-rR4"/>
+                            <constraint firstAttribute="bottom" secondItem="8rH-G3-X8f" secondAttribute="bottom" id="Bs8-fI-g3Z"/>
+                            <constraint firstItem="beV-eq-wq0" firstAttribute="width" secondItem="8rH-G3-X8f" secondAttribute="width" multiplier="0.9" id="DG0-qY-MDB"/>
+                            <constraint firstItem="2UW-K6-Bzf" firstAttribute="centerX" secondItem="ncG-Qp-OAW" secondAttribute="centerX" id="HWm-4s-jOP"/>
+                            <constraint firstItem="8rH-G3-X8f" firstAttribute="leading" secondItem="ncG-Qp-OAW" secondAttribute="leading" id="HrJ-YQ-baX"/>
+                            <constraint firstItem="PZa-ui-O1F" firstAttribute="height" secondItem="4wb-Eb-TT0" secondAttribute="height" multiplier="0.803922" id="KjZ-Tl-go0"/>
+                            <constraint firstItem="fR8-vL-bb5" firstAttribute="height" secondItem="beV-eq-wq0" secondAttribute="height" multiplier="0.459459" id="LzO-QH-DWa"/>
+                            <constraint firstItem="Th0-2z-esH" firstAttribute="leading" secondItem="4wb-Eb-TT0" secondAttribute="trailing" constant="85.5" id="NrY-bm-lbv"/>
+                            <constraint firstItem="8rH-G3-X8f" firstAttribute="width" secondItem="jUn-o5-dhQ" secondAttribute="width" id="PrV-70-SxH"/>
+                            <constraint firstItem="ncG-Qp-OAW" firstAttribute="bottom" secondItem="fKp-oq-Rt6" secondAttribute="bottom" constant="60" id="Q4o-pZ-1jD"/>
+                            <constraint firstItem="YfN-4p-twi" firstAttribute="centerY" secondItem="2UW-K6-Bzf" secondAttribute="centerY" id="QoS-Cm-P3U"/>
+                            <constraint firstItem="ncG-Qp-OAW" firstAttribute="trailing" secondItem="8rH-G3-X8f" secondAttribute="trailing" id="S2I-pd-aKL"/>
+                            <constraint firstItem="PZa-ui-O1F" firstAttribute="centerX" secondItem="4wb-Eb-TT0" secondAttribute="centerX" id="SaR-eh-fWt"/>
+                            <constraint firstItem="YfN-4p-twi" firstAttribute="height" secondItem="2UW-K6-Bzf" secondAttribute="height" multiplier="0.516393" id="T0d-0b-Z3z"/>
+                            <constraint firstItem="Th0-2z-esH" firstAttribute="top" secondItem="ncG-Qp-OAW" secondAttribute="top" constant="49" id="T8n-ON-hUE"/>
+                            <constraint firstItem="fKp-oq-Rt6" firstAttribute="width" secondItem="8rH-G3-X8f" secondAttribute="width" multiplier="0.821256" id="V7F-DL-2zI"/>
+                            <constraint firstItem="2UW-K6-Bzf" firstAttribute="top" secondItem="4wb-Eb-TT0" secondAttribute="bottom" constant="70" id="Wvb-Xi-qX2"/>
+                            <constraint firstItem="beV-eq-wq0" firstAttribute="top" secondItem="2UW-K6-Bzf" secondAttribute="bottom" constant="30" id="YkT-go-mUY"/>
+                            <constraint firstItem="PZa-ui-O1F" firstAttribute="width" secondItem="4wb-Eb-TT0" secondAttribute="width" multiplier="0.271903" id="Z10-pl-lUx"/>
+                            <constraint firstItem="PZa-ui-O1F" firstAttribute="centerY" secondItem="4wb-Eb-TT0" secondAttribute="centerY" id="ZGb-qT-qM6"/>
+                            <constraint firstItem="gpb-o0-1BX" firstAttribute="top" secondItem="ncG-Qp-OAW" secondAttribute="top" constant="40" id="a9v-4q-gUx"/>
+                            <constraint firstItem="gST-yv-dbD" firstAttribute="top" secondItem="beV-eq-wq0" secondAttribute="bottom" constant="30" id="e36-ka-jh0"/>
+                            <constraint firstItem="4wb-Eb-TT0" firstAttribute="top" secondItem="ncG-Qp-OAW" secondAttribute="top" constant="40" id="e3e-OT-4QD"/>
+                            <constraint firstItem="YfN-4p-twi" firstAttribute="centerX" secondItem="2UW-K6-Bzf" secondAttribute="centerX" id="ftb-ZL-Ogg"/>
+                            <constraint firstItem="fR8-vL-bb5" firstAttribute="centerX" secondItem="beV-eq-wq0" secondAttribute="centerX" id="h0c-Pk-44L"/>
+                            <constraint firstItem="4wb-Eb-TT0" firstAttribute="leading" secondItem="ncG-Qp-OAW" secondAttribute="leading" constant="20" id="hHf-QV-9ZX"/>
+                            <constraint firstItem="ncG-Qp-OAW" firstAttribute="trailing" secondItem="gpb-o0-1BX" secondAttribute="trailing" id="i9n-G6-id9"/>
+                            <constraint firstItem="8rH-G3-X8f" firstAttribute="top" secondItem="jUn-o5-dhQ" secondAttribute="top" id="kD0-JZ-EiA"/>
+                            <constraint firstItem="YfN-4p-twi" firstAttribute="width" secondItem="2UW-K6-Bzf" secondAttribute="width" multiplier="0.790885" id="m0W-NN-d6G"/>
+                            <constraint firstItem="fR8-vL-bb5" firstAttribute="width" secondItem="beV-eq-wq0" secondAttribute="width" multiplier="0.823056" id="nJH-m4-sAm"/>
+                            <constraint firstItem="beV-eq-wq0" firstAttribute="centerX" secondItem="8rH-G3-X8f" secondAttribute="centerX" id="nRH-ah-dDo"/>
+                            <constraint firstItem="fKp-oq-Rt6" firstAttribute="centerX" secondItem="8rH-G3-X8f" secondAttribute="centerX" id="pt4-5v-VRm"/>
+                            <constraint firstItem="gpb-o0-1BX" firstAttribute="width" secondItem="jUn-o5-dhQ" secondAttribute="width" multiplier="0.4" id="s0K-dI-DyG"/>
+                            <constraint firstItem="gST-yv-dbD" firstAttribute="centerX" secondItem="8rH-G3-X8f" secondAttribute="centerX" id="vfl-2h-9u2"/>
+                            <constraint firstItem="fR8-vL-bb5" firstAttribute="centerY" secondItem="beV-eq-wq0" secondAttribute="centerY" id="x6A-3c-Wz7"/>
+                            <constraint firstItem="ncG-Qp-OAW" firstAttribute="trailing" secondItem="Th0-2z-esH" secondAttribute="trailing" constant="60" id="yLb-p0-5h0"/>
+                            <constraint firstItem="2UW-K6-Bzf" firstAttribute="width" secondItem="8rH-G3-X8f" secondAttribute="width" multiplier="0.9" id="yie-yq-nzJ"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="directionLabel" destination="fKp-oq-Rt6" id="HoV-Vb-t3T"/>
+                        <outlet property="resultLabel" destination="gST-yv-dbD" id="m9U-Yg-KLz"/>
+                        <outlet property="scoreLabel" destination="PZa-ui-O1F" id="Ket-o2-IGa"/>
+                        <outlet property="stackViewTargetWord" destination="YfN-4p-twi" id="7sk-k1-Iqv"/>
+                        <outlet property="timerLabel" destination="Th0-2z-esH" id="VRK-vt-Faj"/>
+                        <outlet property="typingWordTextField" destination="fR8-vL-bb5" id="2pb-hl-Uiw"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7vh-Uk-KCJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="347.82608695652175" y="34.821428571428569"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="background" width="375" height="667"/>
+        <image name="input" width="256" height="111"/>
+        <image name="number" width="300" height="122"/>
+        <image name="score" width="119" height="51"/>
+        <image name="time" width="149" height="49"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
