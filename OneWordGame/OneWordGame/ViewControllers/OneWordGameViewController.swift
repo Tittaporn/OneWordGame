@@ -36,6 +36,7 @@ class OneWordGameViewController: UIViewController, UITextFieldDelegate {
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
         startTimer()
+       
         startTimerForEachWord()
     }
     
@@ -48,6 +49,8 @@ class OneWordGameViewController: UIViewController, UITextFieldDelegate {
         timerLabel.text = "\(timeFormatted(totalTime))"
         if totalTime != 0 {
             totalTime -= 1
+           
+
         } else {
             endTimer()
         }
@@ -66,7 +69,16 @@ class OneWordGameViewController: UIViewController, UITextFieldDelegate {
  
     func startTimerForEachWord() {
         countdownTimerForWord = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true, block: { timer in
-            print("FIRE!!!")
+           // print("FIRE!!!")
+            self.setRandomTarget()
+            self.resetStackView()
+        })
+        print("startTimerForEachWord")
+    }
+    
+    func startTimerForEachLetter() {
+        countdownTimerForWord = Timer.scheduledTimer(withTimeInterval: 2, repeats: true, block: { timer in
+           // print("FIRE!!!")
             self.setRandomTarget()
             self.resetStackView()
         })
