@@ -21,18 +21,23 @@ class OneWordGameViewController: UIViewController, UITextFieldDelegate {
     var target = ""
     var targetArray: [String] = []
     var countdownTimer: Timer!
+    var countdownTimerForWord: Timer!
     var totalTime = 60
+    var wordTimer = 5 //2 += word.count
+    var letterTimer = 2
+    var score = 0
     
     // MARK: - Life Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         typingWordTextField.delegate = self
         setRandomTarget()
         buildTargetStack()
-        
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
+        startTimer()
+       
+        startTimerForEachWord()
     }
     
     //  MARK: - Methods
@@ -44,11 +49,12 @@ class OneWordGameViewController: UIViewController, UITextFieldDelegate {
         timerLabel.text = "\(timeFormatted(totalTime))"
         if totalTime != 0 {
             totalTime -= 1
+           
+
         } else {
             endTimer()
         }
     }
-    
     func endTimer() {
         countdownTimer.invalidate()
     }
@@ -60,12 +66,31 @@ class OneWordGameViewController: UIViewController, UITextFieldDelegate {
         return String(format: "%02d:%02d", minutes, seconds)
     }
     
+ 
+    func startTimerForEachWord() {
+        countdownTimerForWord = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true, block: { timer in
+           // print("FIRE!!!")
+            self.setRandomTarget()
+            self.resetStackView()
+        })
+        print("startTimerForEachWord")
+    }
+    
+    func startTimerForEachLetter() {
+        countdownTimerForWord = Timer.scheduledTimer(withTimeInterval: 2, repeats: true, block: { timer in
+           // print("FIRE!!!")
+            self.setRandomTarget()
+            self.resetStackView()
+        })
+        print("startTimerForEachWord")
+    }
+    
     func setRandomTarget() {
-        
         target = WordController.shared.words.randomElement() ?? ""
         targetArray = target.map(String.init)
+        //startTimerForEachWord()
     }
-
+    
     func textFieldDidChangeSelection(_ textField: UITextField) {
         if self.typingWordTextField.text == self.target {
             // scoreFunction() based on the timer
@@ -78,27 +103,26 @@ class OneWordGameViewController: UIViewController, UITextFieldDelegate {
             textField.becomeFirstResponder()
         }
     }
-
+    
     func buildTargetStack()  {
         for letter in targetArray {
             let letterBlock = generateLetterBlock(for: letter)
             stackViewTargetWord.addArrangedSubview(letterBlock)
+            //timerOfEachLetterToPresent
         }
     }
-
+    
     func generateLetterBlock(for letter: String) -> UILabel {
         let letterBlock = UILabel()
         letterBlock.text = letter.capitalized
         letterBlock.font = UIFont(name: "Helvetica", size: 30)
         letterBlock.font = UIFont.boldSystemFont(ofSize: 30)
         letterBlock.textColor = .white
-//        letterBlock.layer.borderColor = CGColor(gray: 30.0, alpha: 1)
-//        letterBlock.layer.borderWidth = 3
         letterBlock.textAlignment = .center
         
         return letterBlock
     }
-
+    
     func resetStackView() {
         for subview in stackViewTargetWord.arrangedSubviews {
             subview.removeFromSuperview()
