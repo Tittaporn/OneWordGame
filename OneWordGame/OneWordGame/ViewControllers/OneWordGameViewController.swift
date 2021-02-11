@@ -89,9 +89,11 @@ class OneWordGameViewController: UIViewController, UITextFieldDelegate {
     func generateLetterBlock(for letter: String) -> UILabel {
         let letterBlock = UILabel()
         letterBlock.text = letter.capitalized
-        
-        letterBlock.layer.borderColor = CGColor(gray: 30.0, alpha: 1)
-        letterBlock.layer.borderWidth = 3
+        letterBlock.font = UIFont(name: "Helvetica", size: 30)
+        letterBlock.font = UIFont.boldSystemFont(ofSize: 30)
+        letterBlock.textColor = .white
+//        letterBlock.layer.borderColor = CGColor(gray: 30.0, alpha: 1)
+//        letterBlock.layer.borderWidth = 3
         letterBlock.textAlignment = .center
         
         return letterBlock
