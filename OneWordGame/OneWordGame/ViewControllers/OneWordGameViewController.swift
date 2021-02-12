@@ -25,7 +25,6 @@ class OneWordGameViewController: UIViewController, UITextFieldDelegate {
     var countdownTimerForWord: Timer!
     var countdownTimerForLetter: Timer!
     var totalTime = 60
-    var letterTimer = 2
     var score = 0
     
     // MARK: - Life Cycle Methods
@@ -71,7 +70,6 @@ class OneWordGameViewController: UIViewController, UITextFieldDelegate {
         })
         RunLoop.current.add(countdownTimerForWord, forMode: .common)
     }
-    //  BenTin - startTimerForEachWord is now working for both typing and just regular counting... change the timeIntervale in the parameters above to chage the duration of the time for each word.  Can probably write a similar function for startTimerForEachLetter.  Note that this function is not using the variable wordTimer.
     
     func startTimerForEachLetter() {
         countdownTimerForLetter = Timer(timeInterval: 2, repeats: true, block: { (timer) in
