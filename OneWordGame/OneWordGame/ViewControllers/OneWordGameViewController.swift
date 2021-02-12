@@ -22,8 +22,9 @@ class OneWordGameViewController: UIViewController, UITextFieldDelegate {
     var targetArray: [String] = []
     var countdownTimer: Timer!
     var countdownTimerForWord: Timer!
+    var countdownTimerForLetter: Timer!
     var totalTime = 60
-    var wordTimer = 5 //2 += word.count
+    //var wordTimer = 0 //2 += word.count
     var letterTimer = 2
     var score = 0
     
@@ -36,8 +37,6 @@ class OneWordGameViewController: UIViewController, UITextFieldDelegate {
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
         startTimer()
-       
-        startTimerForEachWord()
     }
     
     //  MARK: - Methods
@@ -49,8 +48,6 @@ class OneWordGameViewController: UIViewController, UITextFieldDelegate {
         timerLabel.text = "\(timeFormatted(totalTime))"
         if totalTime != 0 {
             totalTime -= 1
-           
-
         } else {
             endTimer()
         }
@@ -66,29 +63,24 @@ class OneWordGameViewController: UIViewController, UITextFieldDelegate {
         return String(format: "%02d:%02d", minutes, seconds)
     }
     
- 
     func startTimerForEachWord() {
-        countdownTimerForWord = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true, block: { timer in
-           // print("FIRE!!!")
+        countdownTimerForWord = Timer(timeInterval: 5, repeats: true, block: { (timer) in
+            timer.invalidate()
             self.setRandomTarget()
             self.resetStackView()
         })
+        RunLoop.current.add(countdownTimerForWord, forMode: .common)
         print("startTimerForEachWord")
     }
+    //  BenTin - startTimerForEachWord is now working for both typing and just regular counting... change the timeIntervale in the parameters above to chage the duration of the time for each word.  Can probably write a similar function for startTimerForEachLetter.  Note that this function is not using the variable wordTimer.
     
     func startTimerForEachLetter() {
-        countdownTimerForWord = Timer.scheduledTimer(withTimeInterval: 2, repeats: true, block: { timer in
-           // print("FIRE!!!")
-            self.setRandomTarget()
-            self.resetStackView()
-        })
-        print("startTimerForEachWord")
+        
     }
     
     func setRandomTarget() {
         target = WordController.shared.words.randomElement() ?? ""
         targetArray = target.map(String.init)
-        //startTimerForEachWord()
     }
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
@@ -96,11 +88,12 @@ class OneWordGameViewController: UIViewController, UITextFieldDelegate {
             // scoreFunction() based on the timer
             // update scoreLabel
             
-            setRandomTarget()
-            resetStackView()
-            
             textField.text = ""
             textField.becomeFirstResponder()
+            
+            countdownTimerForWord.invalidate()
+            setRandomTarget()
+            resetStackView()
         }
     }
     
@@ -108,8 +101,12 @@ class OneWordGameViewController: UIViewController, UITextFieldDelegate {
         for letter in targetArray {
             let letterBlock = generateLetterBlock(for: letter)
             stackViewTargetWord.addArrangedSubview(letterBlock)
-            //timerOfEachLetterToPresent
+            
+            //            guard let labelView = stackViewTargetWord.arrangedSubviews.first as? UILabel else { return }
+            //            labelView.text = letter.capitalized
         }
+        // startTimerForEachLetter()
+        startTimerForEachWord()
     }
     
     func generateLetterBlock(for letter: String) -> UILabel {
