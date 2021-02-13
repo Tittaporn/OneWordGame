@@ -30,7 +30,6 @@ class OneWordGameViewController: UIViewController, UITextFieldDelegate {
     var totalTime = 60
     var score = 0
     var isPlayingGame: Bool = false
-    var isCorrectedAnswer: Bool = false
     
     // MARK: - Life Cycle Methods
     override func viewDidLoad() {
@@ -49,7 +48,7 @@ class OneWordGameViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Actions
     @IBAction func startGameButtonTapped(_ sender: Any) {
-       // print("button Tapped")
+        // print("button Tapped")
         isPlayingGame.toggle()
         print("isPlayingGame \(isPlayingGame)")
         if isPlayingGame {
@@ -60,7 +59,6 @@ class OneWordGameViewController: UIViewController, UITextFieldDelegate {
     }
     
     // MARK: - Game Methods
-    
     func playingGame() {
         gameOverLabel.isHidden = true
         score = 0
@@ -71,34 +69,15 @@ class OneWordGameViewController: UIViewController, UITextFieldDelegate {
         setRandomTarget()
         buildTargetStack()
         gameStatusButtonLable.text = "Stop Game"
-        
-//        if isCorrectedAnswer {
-//            resultLabel.isHidden = true
-//            resultLabel.text = "✅ 👍👍👍"
-//
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-//
-//                self.resultLabel.text = ""
-//                // Put your code which should be executed with a delay here
-//            }
-//        }
-       // isPlayingGame = false
     }
     
     func stoppingGame() {
-       // timerLabel.text = "\(totalTime)"
-        //endTimer()
-        //endTimer()
-    
-        
         totalTime = 0
-        
         timerLabel.text = "00 : 00"
         gameStatusButtonLable.text = "Start Game"
-
         if score > 10 {
             resultLabel.isHidden = false
-        resultLabel.text = "Congratulation ! 🌟🌟🌟 \nOne Word Master."
+            resultLabel.text = "Congratulation ! 🌟🌟🌟 \nOne Word Master."
         } else {
             resultLabel.isHidden = false
             resultLabel.text = "Try Again ! ❌ \nBetter Luck Next Time."
@@ -107,11 +86,7 @@ class OneWordGameViewController: UIViewController, UITextFieldDelegate {
         gameOverLabel.text = "Game Over"
         stackViewTargetWord.isHidden = true
         resetStackView()
-      //  isPlayingGame = true
-       
     }
-    
-    
     
     //  MARK: - Timer Methods
     func startTimer() {
@@ -131,7 +106,6 @@ class OneWordGameViewController: UIViewController, UITextFieldDelegate {
         countdownTimer.invalidate()
         countdownTimerForWord.invalidate()
         countdownTimerForLetter.invalidate()
-        //resetStackView()
         isPlayingGame = false
         stoppingGame()
     }
@@ -139,7 +113,6 @@ class OneWordGameViewController: UIViewController, UITextFieldDelegate {
     func timeFormatted(_ totalSeconds: Int) -> String {
         let seconds: Int = totalSeconds % 60
         let minutes: Int = (totalSeconds / 60) % 60
-        //     let hours: Int = totalSeconds / 3600
         return String(format: "%02d:%02d", minutes, seconds)
     }
     
@@ -148,6 +121,7 @@ class OneWordGameViewController: UIViewController, UITextFieldDelegate {
             timer.invalidate()
             self.setRandomTarget()
             self.resetStackView()
+            self.buildTargetStack()
             self.typingWordTextField.text = ""
         })
         RunLoop.current.add(countdownTimerForWord, forMode: .common)
@@ -161,8 +135,7 @@ class OneWordGameViewController: UIViewController, UITextFieldDelegate {
         RunLoop.current.add(countdownTimerForLetter, forMode: .common)
     }
     
-    
-    // MARK: -  Targets Methods
+    // MARK: -  Target's Word Methods
     func setRandomTarget() {
         target = WordController.shared.words.randomElement() ?? ""
         targetArray = target.map(String.init)
@@ -170,7 +143,6 @@ class OneWordGameViewController: UIViewController, UITextFieldDelegate {
     
     func showRandomLetter() {
         guard let random = hiddenLetters.randomElement() else { return }
-        
         var index = 0
         for letter in targetArray {
             if letter == random {
@@ -186,52 +158,39 @@ class OneWordGameViewController: UIViewController, UITextFieldDelegate {
             }
             return false
         }
-        
         startTimerForEachLetter()
     }
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
         if self.typingWordTextField.text == self.target {
-            //             scoreFunction() based on the timer
             score += 1
             scoreLabel.text = "\(score)"
-            isCorrectedAnswer = true
             resultLabel.isHidden = false
-            
             resultLabel.text = "👍 ✅"
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 self.resultLabel.text = ""
             }
-
-            //             update scoreLabel
-            
             textField.text = ""
             textField.becomeFirstResponder()
-            
             countdownTimerForWord.invalidate()
             countdownTimerForLetter.invalidate()
             setRandomTarget()
             resetStackView()
+            buildTargetStack()
         }
-        isCorrectedAnswer = false
     }
     
     func buildTargetStack()  {
         hiddenLetters.removeAll()
-        
         for letter in targetArray {
             let letterBlock = generateLetterBlock(for: letter)
-            
             if letter == targetArray.first {
                 letterBlock.text = letter.capitalized
             }
-            
             stackViewTargetWord.addArrangedSubview(letterBlock)
         }
-        
         hiddenLetters = targetArray
         hiddenLetters.removeFirst()
-        
         startTimerForEachLetter()
         startTimerForEachWord()
     }
@@ -243,7 +202,6 @@ class OneWordGameViewController: UIViewController, UITextFieldDelegate {
         letterBlock.font = UIFont.boldSystemFont(ofSize: 30)
         letterBlock.textColor = .white
         letterBlock.textAlignment = .center
-        
         return letterBlock
     }
     
@@ -251,7 +209,5 @@ class OneWordGameViewController: UIViewController, UITextFieldDelegate {
         for subview in stackViewTargetWord.arrangedSubviews {
             subview.removeFromSuperview()
         }
-        buildTargetStack()
     }
-    
 }   //  End of Class
