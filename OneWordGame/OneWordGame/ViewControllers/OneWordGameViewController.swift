@@ -42,7 +42,7 @@ class OneWordGameViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         resultLabel.isHidden = true
-        gameOverLabel.isHidden = true
+        gameOverLabel.text = "One Word Game"
         timerLabel.text = "00 : 00"
     }
     
@@ -61,6 +61,7 @@ class OneWordGameViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Game Methods
     func playingGame() {
         gameOverLabel.isHidden = true
+        resultLabel.isHidden = true
         score = 0
         totalTime = 60
         scoreLabel.text = "\(score)"
