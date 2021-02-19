@@ -13,4 +13,9 @@ Start by having one person create a GitHub repo and adding the other as a Collab
 - Take advantage of this experience as it will be a tremendous help come time for group projects!
 
 ### Now, go GIT GUD!
+![Screen Shot 2021-02-19 at 12 47 17 PM](https://user-images.githubusercontent.com/57606580/108547988-d8150980-72b0-11eb-8875-70de551955e1.png)
+![Screen Shot 2021-02-19 at 12 47 56 PM](https://user-images.githubusercontent.com/57606580/108547992-d9463680-72b0-11eb-82e6-4325fc5fdab7.png)
 
+
+### @iOS App Development Bootcamp at Dev Mountain
+Over 13 demanding weeks in our iOS development bootcamp you’ll find out what it means to be an app developer. Using tools like Github and Xcode to collaborate, and languages like Objective-C and Swift to create, you’ll prepare for a career in tech. At the end of the course, students work with Software QA and UX Design students to create an app for Apple products.
